@@ -1,6 +1,6 @@
 <?php
 
-namespace Kunstmaan\RedirectBundle\Tests\Entity;
+namespace Kunstmaan\RedirectBundle\Tests\AdminList;
 
 use Doctrine\ORM\EntityManager;
 use Kunstmaan\AdminBundle\Helper\Security\Acl\AclHelper;
@@ -8,9 +8,6 @@ use Kunstmaan\AdminListBundle\AdminList\Field;
 use Kunstmaan\RedirectBundle\AdminList\RedirectAdminListConfigurator;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class RedirectAdminListConfiguratorTest
- */
 class RedirectAdminListConfiguratorTest extends TestCase
 {
     /**
@@ -52,7 +49,7 @@ class RedirectAdminListConfiguratorTest extends TestCase
             },
             $fields
         );
-        $this->assertEquals(array('origin', 'target', 'permanent', 'note'), $fieldNames);
+        $this->assertEquals(['origin', 'target', 'permanent', 'note'], $fieldNames);
     }
 
     public function testBuildFilters()
