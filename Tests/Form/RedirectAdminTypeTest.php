@@ -6,9 +6,6 @@ use Kunstmaan\AdminBundle\Helper\DomainConfigurationInterface;
 use Kunstmaan\RedirectBundle\Form\RedirectAdminType;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class RedirectAdminTypeTest
- */
 class RedirectAdminTypeTest extends TestCase
 {
     /**
@@ -41,7 +38,7 @@ class RedirectAdminTypeTest extends TestCase
         $singleDomainConfiguration = $this->getMockBuilder('Kunstmaan\AdminBundle\Helper\DomainConfigurationInterface')
             ->disableOriginalConstructor()->getMock();
         $singleDomainConfiguration->expects($this->any())->method('isMultiDomainHost')->willReturn(false);
-        $singleDomainConfiguration->expects($this->any())->method('getHosts')->willReturn(array());
+        $singleDomainConfiguration->expects($this->any())->method('getHosts')->willReturn([]);
 
         $this->multiDomainConfiguration = $multiDomainConfiguration;
         $this->singleDomainConfiguration = $singleDomainConfiguration;
@@ -71,7 +68,7 @@ class RedirectAdminTypeTest extends TestCase
             ->method('add')
             ->with('permanent');
 
-        $this->objectSingleDomain->buildForm($builder, array('domainConfiguration' => $this->singleDomainConfiguration));
+        $this->objectSingleDomain->buildForm($builder, ['domainConfiguration' => $this->singleDomainConfiguration]);
 
         $builder = $this->createMock('Symfony\Component\Form\Test\FormBuilderInterface');
         $builder
@@ -91,6 +88,6 @@ class RedirectAdminTypeTest extends TestCase
             ->method('add')
             ->with('permanent');
 
-        $this->objectMultiDomain->buildForm($builder, array('domainConfiguration' => $this->multiDomainConfiguration));
+        $this->objectMultiDomain->buildForm($builder, ['domainConfiguration' => $this->multiDomainConfiguration]);
     }
 }
